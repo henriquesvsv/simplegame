@@ -11,6 +11,7 @@
     width: 100vw;
     height: 100vh;
     background-color: aqua;
+    background-image: url(fundo.jpg);
 }
 
 .menu{
@@ -37,14 +38,13 @@
     width: 100vw;
     height: 6vw;
     background-color: brown;
+    background-image: url(grass.jpg);
     position: absolute;
     top: 89vh;
 }
 
 .personagem{
-    width: 4vw;
-    height: 18vh;
-    background-color: black;
+    
     position: absolute;
-    top:72vh;
+    bottom:11.1vh;
 }
