@@ -7,11 +7,11 @@ var personagembottom = 70;
 var personaWidth = 300;
 var personaHeight = 175;
 //A altura e largura do Spritesheet
-var spriteWidth = 417;
-var spriteHeight = 674;
+var spriteWidth = 192;
+var spriteHeight = 128;
 //Temos 2 linhas por 8 colunas no sprite sheet
-var rows = 12;
-var cols = 8; 
+var rows = 3;
+var cols = 3; 
 
 //A linha 0 (primeira) é para o movimento da direita
 var trackRight = 0;
@@ -26,11 +26,11 @@ var height = spriteHeight/rows;
 
 var curFrame = 0;
 //O total de frames é 8
-var frameCount = 4; 
+var frameCount = 3; 
 
 //x and y coordenadas para renderizar o sprite
-var x=0;
-var y=0;
+var x=50;
+var y=50;
 //x and y coordenadas do oanvas para obter um único frame
 var srcX=0;
 var srcY=0;
@@ -41,16 +41,36 @@ var right = true;
 //Velocidade do movimento
 var speed = 12;
 //Getting the canvas
-var canvas = document.getElementById('personagem');
+var canvas = document.getElementById('bunny');
 //Configurando largura e altura do canvas
-personagem.width = personaWidth;
-personagem.height = personaHeight;
+canvas.width = personaWidth;
+canvas.height = personaHeight;
 //Estabelecendo conexão com canvas
-var ctx = personagem.getContext("2d");
+var ctx = canvas.getContext("2d");
 //Criando um objeto da imagem de seu personagem
 var character = new Image();
 //Informando o nome do arquivo sprite
-character.src = "personagem.png";
+character.src = "bunny.png";
+
+function updateFrame(){
+    ctx.clearRect(x,y,width,height);
+
+    //Updating the frame index
+    curFrame = ++curFrame % frameCount;
+    //Calculating the x coordinate for spritesheet
+    srcX = curFrame * width;
+    }
+
+    function draw(){
+        //Updating the frame
+        updateFrame();
+        //Drawing the image
+        ctx.drawImage(character,srcX,srcY,width,height,x,y,width,height);
+        }
+
+        setInterval(draw,100);
+
+
 function andar(direcao){
     switch(direcao){
         case 'right':
