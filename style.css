@@ -43,8 +43,10 @@
     top: 89vh;
 }
 
-.personagem{
+#personagem{
     
-    position: absolute;
-    bottom:11.1vh;
+    position: relative;
+    bottom:0px;
+    display: flex;
+    top:300px;
 }

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded' , () => {
-   
+    var personagem = document.getElementById('personagem');
+
 var personagemleft = 0;
 var personagembottom = 70;
 
@@ -8,7 +9,7 @@ var personaWidth = 300;
 var personaHeight = 175;
 //A altura e largura do Spritesheet
 var spriteWidth = 192;
-var spriteHeight = 128;
+var spriteHeight = 100;
 //Temos 2 linhas por 8 colunas no sprite sheet
 var rows = 3;
 var cols = 3; 
@@ -29,7 +30,7 @@ var curFrame = 0;
 var frameCount = 3; 
 
 //x and y coordenadas para renderizar o sprite
-var x=50;
+var x=300;
 var y=50;
 //x and y coordenadas do oanvas para obter um único frame
 var srcX=0;
@@ -65,28 +66,44 @@ function updateFrame(){
         //Updating the frame
         updateFrame();
         //Drawing the image
-        ctx.drawImage(character,srcX,srcY,width,height,x,y,width,height);
+        ctx.drawImage(character,srcX,srcY,width,height,0,50,width,height);
+        ctx.clearRect(x,y,width,height);
+
         }
 
-        setInterval(draw,100);
 
+    function drawLeft(){
+        //Updating the frame
+        updateFrame();
+        //Drawing the image
+        ctx.drawImage(character,0,height,width,height,x,y,width,height);
+
+    }
 
 function andar(direcao){
     switch(direcao){
         case 'right':
             personagemleft-=20;
             personagem.style.left=personagemleft+'px';
+           setTimeout( draw, 100)
+            ctx.clearRect(x,y,personaWidth,height);
+
             console.log(personagemleft);
             break;
         case 'left':
             personagemleft+=20;
             personagem.style.left=personagemleft+'px';
+            setTimeout( drawLeft, 100)
+            ctx.clearRect(x,height,personaWidth,personaHeight);
+            
+
             console.log(personagemleft);
             break;
        
        
     }
-    
+       ctx.clearRect(x,y,width,height);
+ 
 }
 
 function gravity(){
